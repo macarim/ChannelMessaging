@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">ChannelMessaging</string>
+    <string name="action_settings">Settings</string>
+    <string name="login">Identifiant</string>
+    <string name="mdp">Mot de Passe</string>
+    <string name="valider">Valider</string>
+    <string name="title_activity_channel_list">ChannelListActivity</string>
+</resources>
