@@ -5,4 +5,6 @@
     <string name="mdp">Mot de Passe</string>
     <string name="valider">Valider</string>
     <string name="title_activity_channel_list">ChannelListActivity</string>
+    <string name="title_activity_channel">ChannelActivity</string>
+    <string name="envoyer">Envoyer</string>
 </resources>

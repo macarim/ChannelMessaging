@@ -11,5 +11,8 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="maxime.macari.channelmessaging.ChannelListActivity">
 
-
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/lvChannels"/>
 </RelativeLayout>

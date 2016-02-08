@@ -1,33 +1,23 @@
 package maxime.macari.channelmessaging;
 
 import android.app.Activity;
-import android.os.AsyncTask;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
-import org.apache.http.NameValuePair;
-import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.lang.reflect.Array;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
 public class LoginActivity extends Activity implements View.OnClickListener, RequestListener {
     private EditText etLogin;
     private EditText etMDP;
     private Button btnValider;
+    public static final String PREFS_NAME = "PrefFile";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,7 +46,7 @@ public class LoginActivity extends Activity implements View.OnClickListener, Req
 
     @Override
     public void onError(String error) {
-
+        Toast.makeText(this, error.toString(), Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -64,8 +54,21 @@ public class LoginActivity extends Activity implements View.OnClickListener, Req
 
         try {
             JSONObject json = new JSONObject(response);
-            String accessTocken = json.getString("accesstoken");
-            Toast.makeText(getApplicationContext(),accessTocken,Toast.LENGTH_LONG).show();
+            String accessToken = json.getString("accesstoken");
+
+            SharedPreferences settings =getSharedPreferences(PREFS_NAME, 0);
+            SharedPreferences.Editor editor = settings.edit();
+            editor.putString("accessToken", accessToken);
+            editor.commit();
+            int code = Integer.parseInt(json.getString("code").toString());
+
+            if(code == 200) {
+                Intent I_News = new Intent(this, ChannelListActivity.class);
+                this.startActivity(I_News);
+            } else {
+                onError(response);
+            }
+
         } catch (JSONException e) {
             e.printStackTrace();
         }

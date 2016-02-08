@@ -23,6 +23,10 @@
         <activity
             android:name=".ChannelListActivity"
             android:label="@string/title_activity_channel_list"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ChannelActivity"
+            android:label="@string/title_activity_channel"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
