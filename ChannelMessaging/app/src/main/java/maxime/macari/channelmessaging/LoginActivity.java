@@ -38,7 +38,7 @@ public class LoginActivity extends Activity implements View.OnClickListener, Req
         HashMap<String, String> params = new HashMap<String,String>();
         params.put("username",etLogin.getText().toString());
         params.put("password", etMDP.getText().toString());
-        ConnexionAsync conn = new ConnexionAsync(method, params);
+        NetworkManager conn = new NetworkManager(method, params);
         conn.setRequestListener(this);
         conn.execute();
 
@@ -56,10 +56,13 @@ public class LoginActivity extends Activity implements View.OnClickListener, Req
             JSONObject json = new JSONObject(response);
             String accessToken = json.getString("accesstoken");
 
-            SharedPreferences settings =getSharedPreferences(PREFS_NAME, 0);
+            SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
+
             SharedPreferences.Editor editor = settings.edit();
             editor.putString("accessToken", accessToken);
+
             editor.commit();
+
             int code = Integer.parseInt(json.getString("code").toString());
 
             if(code == 200) {

@@ -26,6 +26,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/etLogin"
+            android:text="mmaca"
             android:layout_weight="4"/>
     </LinearLayout>
     <LinearLayout
@@ -44,6 +45,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/etMdp"
+            android:text="maximemacari"
             android:layout_weight="4"/>
     </LinearLayout>
     <Button
