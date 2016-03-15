@@ -12,13 +12,13 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="maxime.macari.channelmessaging.ChannelListActivity">
 
-<fragment
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:name="maxime.macari.channelmessaging.fragment.ChannelListFragment"
-    android:id="@+id/ChannelListFragment"
-    tools:layout="@layout/channel_list_fragment"
-    android:layout_weight="5"/>
+    <fragment
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:name="maxime.macari.channelmessaging.fragment.ChannelListFragment"
+        android:id="@+id/ChannelListFragment"
+        tools:layout="@layout/channel_list_fragment"
+        android:layout_weight="5"/>
     <fragment
         android:layout_width="match_parent"
         android:layout_height="match_parent"

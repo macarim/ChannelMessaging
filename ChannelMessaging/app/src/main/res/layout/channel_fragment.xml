@@ -13,16 +13,28 @@
     android:layout_alignBottom="@id/lvMessages"
     android:background="#FFFFFF"
     android:orientation="horizontal">
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/btnPhoto"
+            android:text="Photo"
+            android:layout_weight="8.5"/>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/btnSound"
+            android:text="Son"
+            android:layout_weight="9"/>
         <EditText
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:id="@+id/etNewMessage"
-            android:layout_weight="4"/>
+            android:layout_weight="6"/>
         <Button
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:id="@+id/btnEnvoyer"
             android:text="@string/envoyer"
-            android:layout_weight="6"/>
+            android:layout_weight="8"/>
     </LinearLayout>
 </RelativeLayout>

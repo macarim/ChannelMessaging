@@ -1,13 +1,12 @@
 package maxime.macari.channelmessaging.fragment;
 
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -19,7 +18,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import maxime.macari.channelmessaging.Channel;
-import maxime.macari.channelmessaging.ChannelActivity;
 import maxime.macari.channelmessaging.ChannelAdapteur;
 import maxime.macari.channelmessaging.ChannelListActivity;
 import maxime.macari.channelmessaging.LoginActivity;
@@ -27,14 +25,18 @@ import maxime.macari.channelmessaging.NetworkManager;
 import maxime.macari.channelmessaging.R;
 import maxime.macari.channelmessaging.RequestListener;
 
-public class ChannelListFragment extends Fragment implements RequestListener {
+public class ChannelListFragment extends Fragment implements RequestListener, View.OnClickListener {
     public ListView lvChannels;
+    public ArrayList<Channel> Chas;
+    Button friendsBtn;
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup
-            container, Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.channel_list_fragment,container);
 
         lvChannels = (ListView) v.findViewById(R.id.lvChannels);
+
+        friendsBtn = (Button) v.findViewById(R.id.friendsBtn);
+        friendsBtn.setOnClickListener(this);
 
         String method = "getchannels";
         SharedPreferences sharedPref =  getContext().getSharedPreferences(LoginActivity.PREFS_NAME, 0);
@@ -61,7 +63,7 @@ public class ChannelListFragment extends Fragment implements RequestListener {
 
             JSONArray channels = json.getJSONArray("channels");
 
-            final ArrayList<Channel> Chas = new ArrayList<>();
+            Chas = new ArrayList<>();
 
             for(int i = 0; i < channels.length(); i++){
                 JSONObject channel = channels.getJSONObject(i);
@@ -88,5 +90,11 @@ public class ChannelListFragment extends Fragment implements RequestListener {
 
     }
 
+    @Override
+    public void onClick(View v) {
+        if(v.getId() == friendsBtn.getId()){
+
+        }
+    }
 }
 
