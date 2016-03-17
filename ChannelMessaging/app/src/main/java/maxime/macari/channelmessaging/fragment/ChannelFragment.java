@@ -26,6 +26,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -66,9 +67,9 @@ public class ChannelFragment extends Fragment implements RequestListener, View.O
 
     ListView lvMessages;
     EditText etNewMessage;
-    Button btnEnvoyer;
-    Button btnImage;
-    Button btnSound;
+    ImageButton btnEnvoyer;
+    ImageButton btnImage;
+    ImageButton btnSound;
     Location mCurrentLocation = GPSActivity.getCurrentLocation();
     public static final int PICTURE_REQUEST_CODE = 0;
     public static final int REQUEST_WRITE_STORAGE = 10;
@@ -84,9 +85,9 @@ public class ChannelFragment extends Fragment implements RequestListener, View.O
 
         lvMessages = (ListView)v.findViewById(R.id.lvMessages);
         etNewMessage = (EditText) v.findViewById(R.id.etNewMessage);
-        btnEnvoyer = (Button) v.findViewById(R.id.btnEnvoyer);
-        btnImage = (Button) v.findViewById(R.id.btnPhoto);
-        btnSound = (Button) v.findViewById(R.id.btnSound);
+        btnEnvoyer = (ImageButton) v.findViewById(R.id.btnEnvoyer);
+        btnImage = (ImageButton) v.findViewById(R.id.btnPhoto);
+        btnSound = (ImageButton) v.findViewById(R.id.btnSound);
 
         btnEnvoyer.setOnClickListener(this);
         btnImage.setOnClickListener(this);
@@ -153,6 +154,7 @@ public class ChannelFragment extends Fragment implements RequestListener, View.O
                     Message msg = new Message(userID, messageTxt, date, imageURL, userName, latitude, longitude, messageImageUrl,soundUrl);
                     listMessage.add(msg);
                 }
+
                 showAdapter(listMessage);
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -172,8 +174,13 @@ public class ChannelFragment extends Fragment implements RequestListener, View.O
     }
 
     private void showAdapter(List<Message> listMessage) {
+        int index = lvMessages.getFirstVisiblePosition();
+        View v = lvMessages.getChildAt(0);
+        int top = (v == null) ? 0 : (v.getTop() - lvMessages.getPaddingTop());
+
         MessageAdapteur adapter = new MessageAdapteur(getContext(), listMessage);
         lvMessages.setAdapter(adapter);
+        lvMessages.setSelectionFromTop(index, top);
         lvMessages.setOnItemClickListener(this);
     }
 

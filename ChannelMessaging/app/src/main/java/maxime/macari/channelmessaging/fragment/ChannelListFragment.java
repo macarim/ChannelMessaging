@@ -35,8 +35,8 @@ public class ChannelListFragment extends Fragment implements RequestListener, Vi
 
         lvChannels = (ListView) v.findViewById(R.id.lvChannels);
 
-        friendsBtn = (Button) v.findViewById(R.id.friendsBtn);
-        friendsBtn.setOnClickListener(this);
+        //friendsBtn = (Button) v.findViewById(R.id.friendsBtn);
+        //friendsBtn.setOnClickListener(this);
 
         String method = "getchannels";
         SharedPreferences sharedPref =  getContext().getSharedPreferences(LoginActivity.PREFS_NAME, 0);
@@ -92,9 +92,9 @@ public class ChannelListFragment extends Fragment implements RequestListener, Vi
 
     @Override
     public void onClick(View v) {
-        if(v.getId() == friendsBtn.getId()){
+        //if(v.getId() == friendsBtn.getId()){
 
-        }
+       // }
     }
 }
 

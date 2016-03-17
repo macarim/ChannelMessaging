@@ -9,7 +9,6 @@ import android.graphics.PorterDuff;
 import android.graphics.PorterDuffXfermode;
 import android.graphics.Rect;
 import android.graphics.RectF;
-import android.media.Image;
 import android.media.MediaPlayer;
 import android.os.Environment;
 import android.view.LayoutInflater;
@@ -18,11 +17,8 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.ProgressBar;
 import android.widget.SeekBar;
 import android.widget.TextView;
-
-import org.w3c.dom.Text;
 
 import java.util.List;
 import java.util.Timer;
@@ -187,7 +183,7 @@ public class MessageAdapteur extends BaseAdapter {
                                 public void run() {
                                     if (!(amoungToupdate * soundPb.getProgress() >= duration)) {
                                         int p = soundPb.getProgress();
-                                        p += 10;
+                                        p += 1;
                                         soundPb.setProgress(p);
                                     }
                                 }
@@ -197,7 +193,7 @@ public class MessageAdapteur extends BaseAdapter {
                             }
                         };
                     };
-                    mTimer.schedule(tt, 0,100);
+                    mTimer.schedule(tt, 0,amoungToupdate);
 
                     mMediaPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
 
